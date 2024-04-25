@@ -1,0 +1,81 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Block02-4</title>
+ <script src="https://unpkg.com/react@18/umd/react.development.js" defer crossorigin></script>
+ <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" defer crossorigin></script>
+ <script src="https://unpkg.com/@babel/standalone@7.10.3/babel.min.js" defer crossorigin></script>
+ <style>
+   #root{
+        max-width: 170rem;
+        width: 100%;
+        height: 100vh;
+        margin: 0 auto;
+        display: grid;
+        place-content: center;
+        font-size: 1.6rem;
+   }
+    ul {
+        background-color: lightgrey;
+        padding: 0.6rem;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.3rem;
+    }
+    li.li {
+        width: 12rem;
+        text-align: center;
+        background-color: lightgoldenrodyellow;
+    }
+    h2 {
+        text-align: center;
+    }
+
+ </style>
+</head>
+
+<body>
+ <div id="root"></div>
+
+ <script type="text/babel" data-presets="react,stage-3">
+
+   function List({ categories }) {
+      return (
+        <>
+        <h3>Function Components</h3>
+        <ul>
+          {categories.map((category) => (
+            <Item key={category} category={category} />
+          ))}
+        </ul>
+        </>
+      );
+   }
+
+   function Item({ category }) {
+      return <li className='li'>{category}</li>;
+   }
+
+   function App() {
+      const categories = ["shirts", "hats", "shoes"];
+
+      return (
+          <div>
+             <List categories={categories} />
+         </div>
+       );
+   }
+
+   const root = ReactDOM.createRoot(document.getElementById("root"))
+   root.render(<App />);
+ </script>
+</body>
+
+</html>
